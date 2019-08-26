@@ -1,8 +1,9 @@
 import java.util.Scanner;
-
+import java.lang.StringIndexOutOfBoundsException;
+import java.lang.NullPointerException;
 
 public class Duke {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DukeException {
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
 
@@ -27,28 +28,45 @@ public class Duke {
             }
 
             else if (input.contains("done")) {
-               int index = Integer.parseInt(input.substring(input.length() - 1)) - 1;
-                task[index].changeStatus();
-                System.out.println("Nice! I've marked this task as done:\n " +
-                        task[index].toString());
+                try {
+                    int index = Integer.parseInt(input.substring(input.length() - 1)) - 1;
+                    task[index].changeStatus();
+                    System.out.println("Nice! I've marked this task as done:\n " +
+                            task[index].toString());
+                }
+                catch (NullPointerException e) {
+                    System.out.println("\u2639 OOPS!!! The following task does not exist!");
+                }
+
             }
 
             else if (input.contains("todo")) {
-                String info = input.substring(5);
-                task[cnt] = new ToDo(info, ++cnt);
-                System.out.println("Got it. I've added this task:\n " +
-                        task[cnt-1].toString()+"\n" +
-                        "Now you have " + cnt + " tasks in the list.");
+                try {
+                    String info = input.substring(5);
+                    task[cnt] = new ToDo(info, ++cnt);
+                    System.out.println("Got it. I've added this task:\n " +
+                            task[cnt-1].toString()+"\n" +
+                            "Now you have " + cnt + " tasks in the list.");
+                }
+                catch(StringIndexOutOfBoundsException e) {
+                    System.out.println("\u2639 OOPS!!! The description of a todo cannot be empty.");
+                }
+
             }
 
             else if (input.contains("deadline")) {
-                int index = input.indexOf("/by");
-                String info = input.substring(9, index);
-                String endDate = input.substring(index + 4);
-                task[cnt] = new Deadline(info, ++cnt, endDate);
-                System.out.println("Got it. I've added this task:\n " +
-                        task[cnt-1].toString()+ "\n" +
-                        "Now you have " + cnt + " tasks in the list.");
+                try {
+                    int index = input.indexOf("/by");
+                    String info = input.substring(9, index);
+                    String endDate = input.substring(index + 4);
+                    task[cnt] = new Deadline(info, ++cnt, endDate);
+                    System.out.println("Got it. I've added this task:\n " +
+                            task[cnt - 1].toString() + "\n" +
+                            "Now you have " + cnt + " tasks in the list.");
+                }
+                catch (StringIndexOutOfBoundsException e) {
+                    System.out.println("\u2639 OOPS!!! The task needs a deadline");
+                }
             }
 
             else if (input.contains("event")) {
@@ -62,8 +80,7 @@ public class Duke {
             }
 
             else {
-                task[cnt] = new item (input, ++cnt);
-                System.out.println("added: " + input);
+               System.out.println("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
             }
         }
     }
