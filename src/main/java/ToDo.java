@@ -1,4 +1,12 @@
-package PACKAGE_NAME;
+public class ToDo extends item {
 
-public class ToDo {
+    public ToDo(String info, int index) {
+        super(info, index);
+    }
+
+    @Override
+    public String toString() {
+        return "[T]" + super.toString();
+    }
+
 }

@@ -27,4 +27,8 @@ public class item {
     public String getStatusIcon() {
         return (status ? "\u2713" : "\u2718"); //return tick or X symbols
     }
+    public String toString() {
+        String s =   "[" + this.getStatusIcon() + "] " + this.getInfo();
+        return s;
+    }
 }

@@ -1,4 +1,14 @@
-package PACKAGE_NAME;
+public class Event extends item{
 
-public class Event {
+    protected String by;
+
+    public Event(String info, int index, String by) {
+        super(info, index);
+        this.by = by;
+    }
+
+    @Override
+    public String toString() {
+        return "[E]" + super.toString() + " (at: " + by + ")";
+    }
 }

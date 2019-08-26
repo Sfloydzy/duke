@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -7,7 +6,7 @@ public class Duke {
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
 
-        ArrayList<item> a = new ArrayList<>();
+        item[] task = new item[100];
         int cnt = 0;
         while(true) {
             Scanner sc = new Scanner(System.in);
@@ -19,22 +18,51 @@ public class Duke {
             }
 
             else if (input.equals("list")) {
-                for (item s: a) {
-                    System.out.println(s.getIndex() + ".["+ s.getStatusIcon() + "] " + s.getInfo());
+                for (item i: task) {
+                    if (i != null) {
+                        System.out.println(i.getIndex() + "." + i.toString());
+                    }
+                    else break;
                 }
             }
 
             else if (input.contains("done")) {
-               int index = Integer.parseInt(input.substring(input.length() - 1));
-                a.get(index).changeStatus();
+               int index = Integer.parseInt(input.substring(input.length() - 1)) - 1;
+                task[index].changeStatus();
                 System.out.println("Nice! I've marked this task as done:\n " +
-                        "["+ a.get(index).getStatusIcon() + "] " + a.get(index).getInfo());
+                        task[index].toString());
+            }
+
+            else if (input.contains("todo")) {
+                String info = input.substring(5);
+                task[cnt] = new ToDo(info, ++cnt);
+                System.out.println("Got it. I've added this task:\n " +
+                        task[cnt-1].toString()+"\n" +
+                        "Now you have " + cnt + " tasks in the list.");
+            }
+
+            else if (input.contains("deadline")) {
+                int index = input.indexOf("/by");
+                String info = input.substring(9, index);
+                String endDate = input.substring(index + 4);
+                task[cnt] = new Deadline(info, ++cnt, endDate);
+                System.out.println("Got it. I've added this task:\n " +
+                        task[cnt-1].toString()+ "\n" +
+                        "Now you have " + cnt + " tasks in the list.");
+            }
+
+            else if (input.contains("event")) {
+                int index = input.indexOf("/at");
+                String info = input.substring(6, index);
+                String endDate = input.substring(index + 4);
+                task[cnt] = new Event(info, ++cnt, endDate);
+                System.out.println("Got it. I've added this task:\n " +
+                        task[cnt-1].toString()+ "\n" +
+                        "Now you have " + cnt + " tasks in the list.");
             }
 
             else {
-                ++cnt;
-                item data = new item(input, cnt);
-                a.add(data);
+                task[cnt] = new item (input, ++cnt);
                 System.out.println("added: " + input);
             }
         }
