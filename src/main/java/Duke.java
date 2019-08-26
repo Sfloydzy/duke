@@ -7,11 +7,11 @@ public class Duke {
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
 
-        ArrayList<String> a = new ArrayList<>();
+        ArrayList<item> a = new ArrayList<>();
         int cnt = 0;
         while(true) {
             Scanner sc = new Scanner(System.in);
-            String input = sc.next();
+            String input = sc.nextLine();
 
             if (input.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
@@ -19,17 +19,24 @@ public class Duke {
             }
 
             else if (input.equals("list")) {
-                for (String s: a) {
-                    System.out.println(s);
+                for (item s: a) {
+                    System.out.println(s.getIndex() + ".["+ s.getStatusIcon() + "] " + s.getInfo());
                 }
             }
+
+            else if (input.contains("done")) {
+               int index = Integer.parseInt(input.substring(input.length() - 1));
+                a.get(index).changeStatus();
+                System.out.println("Nice! I've marked this task as done:\n " +
+                        "["+ a.get(index).getStatusIcon() + "] " + a.get(index).getInfo());
+            }
+
             else {
                 ++cnt;
-                a.add(cnt + ". " + input);
+                item data = new item(input, cnt);
+                a.add(data);
                 System.out.println("added: " + input);
             }
         }
-
     }
-
 }
