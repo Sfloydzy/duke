@@ -2,13 +2,11 @@ package Module;
 
 public class item {
 
-    private int index;
     private Boolean status;
     private String info;
 
 
-    public item (String info, Boolean status, int index) {
-        this.index = index;
+    public item (String info, Boolean status) {
         this.status = status; //true or false
         this.info = info;
     }
@@ -18,9 +16,13 @@ public class item {
         return true;
     }
 
-    public int getIndex() {
-        return this.index;
+    public Integer checkStatus () {
+        return status ? 1 : 0;
     }
+
+//    public int getIndex() {
+//        return this.index;
+//    }
 
     public String getInfo() {
         return this.info;

@@ -4,9 +4,13 @@ public class Event extends item{
 
     protected String by;
 
-    public Event(String info, Boolean status, int index, String by) {
-        super(info, status, index);
+    public Event(String info, Boolean status, String by) {
+        super(info, status);
         this.by = by;
+    }
+
+    public String getDate () {
+        return by;
     }
 
     @Override

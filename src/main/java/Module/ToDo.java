@@ -2,8 +2,8 @@ package Module;
 
 public class ToDo extends item {
 
-    public ToDo(String info, Boolean status, int index) {
-        super(info, status, index);
+    public ToDo(String info, Boolean status) {
+        super(info, status);
     }
 
     @Override

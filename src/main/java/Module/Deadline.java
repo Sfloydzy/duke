@@ -4,9 +4,13 @@ public class Deadline extends item{
 
     protected String by;
 
-    public Deadline(String info, Boolean status, int index, String by) {
-        super(info, status, index);
+    public Deadline(String info, Boolean status, String by) {
+        super(info, status);
         this.by = by;
+    }
+
+    public String getDate () {
+        return by;
     }
 
     @Override

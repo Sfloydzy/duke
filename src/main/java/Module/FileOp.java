@@ -2,7 +2,9 @@ package Module;
 
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,44 +12,63 @@ public class FileOp {
     private static String path = ".\\src\\main\\java\\Data\\duke.txt";
     private static Scanner fileInput;
     private static ArrayList<item> list = new ArrayList<>();
+    private static File f = new File(path);
+
+
 
     public static ArrayList<item> loadFile() {
-        File f = new File(path);
+
         try {
             fileInput = new Scanner(f);
-            int cnt = 1;
             while (fileInput.hasNextLine()) { //do something
-
                 String type, info;
                 Boolean stat;
-                type = fileInput.next();
-                stat = (fileInput.nextInt() == 1);
-                info = fileInput.nextLine();
-                String[] data = info.split("|");
+                String s1 = fileInput.nextLine();
+                String[] data = s1.split(",");
+                type = data[0];
+                stat = (data[1].equals("1"));
 
                 switch (type) {
                     case "D":
-                        item deadline = new Deadline(data[0], stat, cnt++, data[1]);
+                        item deadline = new Deadline(data[0], stat, data[1]);
                         list.add(deadline);
                         break;
 
                     case "E":
-                        item event = new Event(data[0], stat, cnt++, data[1]);
+                        item event = new Event(data[0], stat, data[1]);
                         list.add(event);
                         break;
 
                     case "T":
-                        item todo = new ToDo(data[0], stat, cnt++);
+                        item todo = new ToDo(data[2], stat);
                         list.add(todo);
                         break;
                 }
-                fileInput.close();
-                return list;
             }
+            fileInput.close();
+            return list;
         }
         catch (FileNotFoundException e) {
-            System.out.println("\"\\u2639 OOPS!!! The file does not exist");
+            return null;
         }
-        return null;
+    }
+
+    public void saveFile (String type, item e, String date) {
+        try {
+            if (type.equals("T")) {
+                FileWriter fileWriter = new FileWriter(f, true);
+                fileWriter.write(type + "," + e.checkStatus() + "," + e.getInfo() + "\n");
+                fileWriter.close();
+            }
+            else  {
+                FileWriter fileWriter = new FileWriter(f, true);
+
+                fileWriter.write(type + "," + e.checkStatus() + "," + e.getInfo() + "," +date+ "\n");
+                fileWriter.close();
+            }
+        }
+        catch (IOException io) {
+            System.out.println("File not found:" + io.getMessage());
+        }
     }
 }

@@ -1,4 +1,6 @@
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 import java.lang.StringIndexOutOfBoundsException;
 import java.lang.NullPointerException;
@@ -10,8 +12,14 @@ public class Duke {
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
 
+
         ArrayList<item> list = new ArrayList<>();
-        int cnt = 0;
+        try { //load previous file
+            list.addAll(Objects.requireNonNull(FileOp.loadFile()));
+        }
+        catch (NullPointerException e) {
+            System.out.println("No previous list");
+        }
         while(true) {
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
@@ -22,11 +30,9 @@ public class Duke {
             }
 
             else if (input.equals("list")) {
+                int count = 1;
                 for (item i: list) {
-                    if (i != null) {
-                        System.out.println(i.getIndex() + "." + i.toString());
-                    }
-                    else break;
+                    System.out.println(count++ +"."+ i.toString());
                 }
             }
 
@@ -46,11 +52,13 @@ public class Duke {
             else if (input.contains("todo")) {
                 try {
                     String info = input.substring(5);
-                    item todo = new ToDo(info, false, ++cnt);
+                    item todo = new ToDo(info, false);
                     list.add(todo);
                     System.out.println("Got it. I've added this task:\n " +
-                            list.get(cnt -1).toString()+"\n" +
-                            "Now you have " + cnt + " tasks in the list.");
+                            list.get(list.size() - 1).toString()+"\n" +
+                            "Now you have " + (list.size()) + " tasks in the list.");
+                    FileOp save = new FileOp();
+                    save.saveFile("T", todo, "");
                 }
                 catch(StringIndexOutOfBoundsException e) {
                     System.out.println("\u2639 OOPS!!! The description of a todo cannot be empty.");
@@ -63,11 +71,13 @@ public class Duke {
                     int index = input.indexOf("/by");
                     String info = input.substring(9, index);
                     String endDate = input.substring(index + 4);
-                    item deadline = new Deadline(info, false, ++cnt, endDate);
+                    Deadline deadline = new Deadline(info, false, endDate);
                     list.add(deadline);
                     System.out.println("Got it. I've added this task:\n " +
-                            list.get(cnt -1).toString() + "\n" +
-                            "Now you have " + cnt + " tasks in the list.");
+                            list.get(list.size() - 1).toString() + "\n" +
+                            "Now you have " + (list.size()) + " tasks in the list.");
+                    FileOp save = new FileOp();
+                    save.saveFile("D", deadline, deadline.getDate());
                 }
                 catch (StringIndexOutOfBoundsException e) {
                     System.out.println("\u2639 OOPS!!! The task needs a deadline");
@@ -78,11 +88,13 @@ public class Duke {
                 int index = input.indexOf("/at");
                 String info = input.substring(6, index);
                 String endDate = input.substring(index + 4);
-                item event = new Event(info, false, ++cnt, endDate);
+                Event event = new Event(info, false, endDate);
                 list.add(event);
                 System.out.println("Got it. I've added this task:\n " +
-                        list.get(cnt -1).toString()+ "\n" +
-                        "Now you have " + cnt + " tasks in the list.");
+                        list.get(list.size() - 1).toString()+ "\n" +
+                        "Now you have " + (list.size()) + " tasks in the list.");
+                FileOp save = new FileOp();
+                save.saveFile("E", event, event.getDate());
             }
 
             else {
