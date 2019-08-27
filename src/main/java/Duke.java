@@ -29,7 +29,7 @@ public class Duke {
 
             else if (input.contains("done")) {
                 try {
-                    int index = Integer.parseInt(input.substring(input.length() - 1)) - 1;
+                    int index = Integer.parseInt(input.substring(5)) - 1;
                     task[index].changeStatus();
                     System.out.println("Nice! I've marked this task as done:\n " +
                             task[index].toString());
