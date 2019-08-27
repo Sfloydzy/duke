@@ -30,12 +30,12 @@ public class FileOp {
 
                 switch (type) {
                     case "D":
-                        item deadline = new Deadline(data[0], stat, data[1]);
+                        item deadline = new Deadline(data[2], stat, data[3]);
                         list.add(deadline);
                         break;
 
                     case "E":
-                        item event = new Event(data[0], stat, data[1]);
+                        item event = new Event(data[2], stat, data[3]);
                         list.add(event);
                         break;
 
@@ -63,12 +63,34 @@ public class FileOp {
             else  {
                 FileWriter fileWriter = new FileWriter(f, true);
 
-                fileWriter.write(type + "," + e.checkStatus() + "," + e.getInfo() + "," +date+ "\n");
+                fileWriter.write(type + "," + e.checkStatus() + "," + e.getInfo() + "," + e.getDate() + "\n");
                 fileWriter.close();
             }
         }
         catch (IOException io) {
             System.out.println("File not found:" + io.getMessage());
+        }
+    }
+
+    public void updateFile (ArrayList<item> up) {
+        try {
+            FileWriter fileWriter = new FileWriter(f);
+            fileWriter.write("");
+            fileWriter.close();
+        }
+        catch (IOException io) {
+            System.out.println("File not found:" + io.getMessage());
+        }
+
+        for (item i: up) {
+            try {
+                FileWriter fileWriter = new FileWriter(f,true);
+                fileWriter.write(i.getType() + "," + i.checkStatus() + "," + i.getInfo() + "," +i.getDate()+ "\n");
+                fileWriter.close();
+            }
+            catch (IOException io) {
+                System.out.println("File not found:" + io.getMessage());
+            }
         }
     }
 }

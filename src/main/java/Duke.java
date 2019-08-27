@@ -42,6 +42,8 @@ public class Duke {
                     list.get(index).changeStatus();
                     System.out.println("Nice! I've marked this task as done:\n " +
                             list.get(index).toString());
+                    FileOp save = new FileOp();
+                    save.updateFile(list);
                 }
                 catch (NullPointerException e) {
                     System.out.println("\u2639 OOPS!!! The following task does not exist!");

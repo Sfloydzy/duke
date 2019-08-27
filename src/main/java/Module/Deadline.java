@@ -6,12 +6,12 @@ public class Deadline extends item{
 
     public Deadline(String info, Boolean status, String by) {
         super(info, status);
+        super.setType("D");
+        super.setDate(by);
         this.by = by;
     }
 
-    public String getDate () {
-        return by;
-    }
+
 
     @Override
     public String toString() {

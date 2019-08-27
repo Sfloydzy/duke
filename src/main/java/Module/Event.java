@@ -6,12 +6,11 @@ public class Event extends item{
 
     public Event(String info, Boolean status, String by) {
         super(info, status);
+        super.setType("E");
+        super.setDate(by);
         this.by = by;
     }
 
-    public String getDate () {
-        return by;
-    }
 
     @Override
     public String toString() {

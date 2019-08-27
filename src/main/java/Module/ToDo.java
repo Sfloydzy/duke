@@ -4,6 +4,7 @@ public class ToDo extends item {
 
     public ToDo(String info, Boolean status) {
         super(info, status);
+        super.setType("T");
     }
 
     @Override

@@ -4,6 +4,8 @@ public class item {
 
     private Boolean status;
     private String info;
+    private String type;
+    private String date = "";
 
 
     public item (String info, Boolean status) {
@@ -14,6 +16,24 @@ public class item {
     public Boolean changeStatus () {
         status = true;
         return true;
+    }
+
+    public String setType (String t) {
+        this.type = t;
+        return this.type;
+    }
+
+    public String getType () {
+        return type;
+    }
+
+    public String setDate (String date) {
+        this.date = date;
+        return this.date;
+    }
+
+    public String getDate () {
+        return date;
     }
 
     public Integer checkStatus () {
