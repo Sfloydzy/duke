@@ -1,9 +1,11 @@
+package Module;
+
 public class Event extends item{
 
     protected String by;
 
-    public Event(String info, int index, String by) {
-        super(info, index);
+    public Event(String info, Boolean status, int index, String by) {
+        super(info, status, index);
         this.by = by;
     }
 

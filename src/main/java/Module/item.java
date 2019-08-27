@@ -1,3 +1,5 @@
+package Module;
+
 public class item {
 
     private int index;
@@ -5,9 +7,9 @@ public class item {
     private String info;
 
 
-    public item (String info, int index) {
+    public item (String info, Boolean status, int index) {
         this.index = index;
-        this.status = false; //true or false
+        this.status = status; //true or false
         this.info = info;
     }
 

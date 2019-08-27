@@ -1,9 +1,11 @@
+package Module;
+
 public class Deadline extends item{
 
     protected String by;
 
-    public Deadline(String info, int index, String by) {
-        super(info, index);
+    public Deadline(String info, Boolean status, int index, String by) {
+        super(info, status, index);
         this.by = by;
     }
 
