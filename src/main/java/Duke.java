@@ -146,7 +146,15 @@ public class Duke {
                 save.saveFile("E", event, event.getDate());
             }
 
-            
+            else if (input.startsWith("find")) {
+                String search = input.substring(5);
+                ArrayList<item> find = new ArrayList<>();
+                for (item i : list) {
+                    if (i.getInfo().contains(search)) {
+                        find.add(i);
+                    }
+                }
+            }
 
             else {
                System.out.println("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
