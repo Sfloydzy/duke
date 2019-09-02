@@ -97,7 +97,7 @@ public class Duke {
 
             }
 
-            else if (input.contains("todo")) {
+            else if (input.startsWith("todo")) {
                 try {
                     String info = input.substring(5);
                     item todo = new ToDo(info, false);
@@ -114,7 +114,7 @@ public class Duke {
 
             }
 
-            else if (input.contains("deadline")) {
+            else if (input.startsWith("deadline")) {
                 try {
                     int index = input.indexOf("/by");
                     String info = input.substring(9, index);
@@ -132,7 +132,7 @@ public class Duke {
                 }
             }
 
-            else if (input.contains("event")) {
+            else if (input.startsWith("event")) {
                 int index = input.indexOf("/at");
                 String info = input.substring(6, index);
 //                String endDate = input.substring(index + 4);
@@ -144,6 +144,37 @@ public class Duke {
                         "Now you have " + (list.size()) + " tasks in the list.");
                 FileOp save = new FileOp();
                 save.saveFile("E", event, event.getDate());
+            }
+
+            else if(input.startsWith("delete")) {
+                int index = Integer.parseInt(input.substring(7)) - 1;
+                System.out.println("Noted. I've removed this task:\n " +
+                        list.get(index).toString());
+                System.out.println("Now you have " + (list.size() - 1) + " tasks in the list.");
+                list.remove(index);
+                FileOp save = new FileOp();
+                save.updateFile(list);
+            }
+
+            else if (input.startsWith("find")) {
+                String search = input.substring(5);
+                ArrayList<item> find = new ArrayList<>();
+                for (item i: list) {
+                    if (i.getInfo().contains(search)) {
+                        find.add(i);
+                    }
+                }
+
+                if (find.size() > 0) {
+                    System.out.println("Here are the matching tasks in your list:");
+                    int count = 1;
+                    for (item i : find) {
+                        System.out.println(count++ + "." + i.toString());
+                    }
+                }
+                else {
+                    System.out.println("There are no tasks matching the search");
+                }
             }
 
             else {
