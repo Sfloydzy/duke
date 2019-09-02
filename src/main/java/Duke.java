@@ -148,16 +148,6 @@ public class Duke {
             }
 
 
-            else if(input.startsWith("delete")) {
-                int index = Integer.parseInt(input.substring(7)) - 1;
-                System.out.println("Noted. I've removed this task:\n " +
-                        list.get(index).toString());
-                System.out.println("Now you have " + (list.size() - 1) + " tasks in the list.");
-                list.remove(index);
-                FileOp save = new FileOp();
-                save.updateFile(list);
-            }
-
 
             else if(input.startsWith("delete")) {
                 int index = Integer.parseInt(input.substring(7)) - 1;
