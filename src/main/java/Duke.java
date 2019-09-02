@@ -146,8 +146,7 @@ public class Duke {
                 FileOp save = new FileOp();
                 save.saveFile("E", event, event.getDate());
             }
-
-<<<<<<< HEAD
+            
 
 
             else if(input.startsWith("delete")) {
@@ -160,7 +159,6 @@ public class Duke {
                 save.updateFile(list);
             }
 
-=======
             else if (input.startsWith("find")) {
                 String search = input.substring(5);
                 ArrayList<item> find = new ArrayList<>();
@@ -170,7 +168,7 @@ public class Duke {
                     }
                 }
             }
->>>>>>> branch-Level-9
+
 
             else {
                System.out.println("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
