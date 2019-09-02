@@ -146,7 +146,7 @@ public class Duke {
                 FileOp save = new FileOp();
                 save.saveFile("E", event, event.getDate());
             }
-            
+
 
 
             else if(input.startsWith("delete")) {
