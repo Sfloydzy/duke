@@ -25,6 +25,7 @@ public class Duke {
     }
 
     public static String dateConvert (String date) {
+        System.out.println(date);
         String[] months = {"January", "February", "March",
                             "April", "May", "June", "July",
                             "August", "September","October",
@@ -32,19 +33,19 @@ public class Duke {
 
         try {
             String[] words = date.split("[/| ]"); // split based on space and /
+            System.out.println(words[3]);
             int hour = Integer.parseInt(words[3].substring(0,2));
             int min = Integer.parseInt(words[3].substring(2));
             String mm = (hour > 12) ? "pm" : "am";
             String wordMin = words[3].substring(2);
+            System.out.println(hour + ":" + min);
             String d1 =  numOrdinal(Integer.parseInt(words[0])) + " of " + months[Integer.parseInt(words[1]) - 1] + " " +
                                     words[2] + ", " + (hour % 12) + ((min == 0) ? "": ("."+ wordMin)) + mm;
             //2nd of December 2019, 6pm
+            System.out.println(d1);
             return d1;
         }
         catch (StringIndexOutOfBoundsException e) {
-            return date;
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
             return date;
         }
     }
