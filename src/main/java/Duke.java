@@ -157,30 +157,7 @@ public class Duke {
                 save.updateFile(list);
             }
 
-<<<<<<< HEAD
-            else if (input.startsWith("find")) {
-                String search = input.substring(5);
-                ArrayList<item> find = new ArrayList<>();
-                for (item i: list) {
-                    if (i.getInfo().contains(search)) {
-                        find.add(i);
-                    }
-                }
-
-                if (find.size() > 0) {
-                    System.out.println("Here are the matching tasks in your list:");
-                    int count = 1;
-                    for (item i : find) {
-                        System.out.println(count++ + "." + i.toString());
-                    }
-                }
-                else {
-                    System.out.println("There are no tasks matching the search");
-                }
-            }
-
-=======
->>>>>>> branch-Level-6
+            
             else {
                System.out.println("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
             }
