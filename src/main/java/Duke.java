@@ -157,6 +157,7 @@ public class Duke {
                 save.updateFile(list);
             }
 
+<<<<<<< HEAD
             else if (input.startsWith("find")) {
                 String search = input.substring(5);
                 ArrayList<item> find = new ArrayList<>();
@@ -178,6 +179,8 @@ public class Duke {
                 }
             }
 
+=======
+>>>>>>> branch-Level-6
             else {
                System.out.println("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
             }
