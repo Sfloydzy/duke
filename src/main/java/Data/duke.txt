@@ -1,10 +1,14 @@
-E,1,photo ,27th of August 2019
-<<<<<<< HEAD
-E,0,dannce ,Monday
-E,1,dance ,Tuesday
-<<<<<<< HEAD
-=======
->>>>>>> parent of a437cb3... Fixed level 8 bugs
-=======
-T,0,stuff,
->>>>>>> branch-Level-6
+E,1,dannce ,Monday
+T,0,more stuff,
+T,1,5,
+T,0,7,
+T,1,stuff here,
+D,0,potato time ,monday
+D,0,potato ,potato time
+T,1,stuff here and now,
+T,0,1,
+T,0,7,
+E,0,potato ,monday
+E,0,potato ,poato
+E,0,potato ,potato time
+E,0,potato ,potato time

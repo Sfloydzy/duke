@@ -1,5 +1,10 @@
-package Module;
+package Data;
 
+
+import Task.Deadline;
+import Task.Event;
+import Task.ToDo;
+import Task.item;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,11 +13,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileOp {
+public class Storage {
     private static String path = ".\\src\\main\\java\\Data\\duke.txt";
     private static Scanner fileInput;
-    private static ArrayList<item> list = new ArrayList<>();
+    private static ArrayList<item> oldList = new ArrayList<>();
     private static File f = new File(path);
+
+    private static ArrayList<item> list = new ArrayList<>();
 
 
 
@@ -31,29 +38,33 @@ public class FileOp {
                 switch (type) {
                     case "D":
                         item deadline = new Deadline(data[2], stat, data[3]);
-                        list.add(deadline);
+                        oldList.add(deadline);
                         break;
 
                     case "E":
                         item event = new Event(data[2], stat, data[3]);
-                        list.add(event);
+                        oldList.add(event);
                         break;
 
                     case "T":
                         item todo = new ToDo(data[2], stat);
-                        list.add(todo);
+                        oldList.add(todo);
                         break;
                 }
             }
             fileInput.close();
-            return list;
+            return oldList;
         }
         catch (FileNotFoundException e) {
             return null;
         }
+
+        catch (ArrayIndexOutOfBoundsException e) {
+            return null;
+        }
     }
 
-    public void saveFile (String type, item e, String date) {
+    public static void saveFile(String type, item e, String date) {
         try {
             if (type.equals("T")) {
                 FileWriter fileWriter = new FileWriter(f, true);
@@ -72,7 +83,7 @@ public class FileOp {
         }
     }
 
-    public void updateFile (ArrayList<item> up) {
+    public static void updateFile(ArrayList<item> up) {
         try {
             FileWriter fileWriter = new FileWriter(f);
             fileWriter.write("");
