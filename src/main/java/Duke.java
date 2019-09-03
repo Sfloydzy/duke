@@ -148,11 +148,17 @@ public class Duke {
 
             else if (input.startsWith("find")) {
                 String search = input.substring(5);
-                ArrayList<item> find = new ArrayList<>();
+                int cnt = 1;
                 for (item i : list) {
                     if (i.getInfo().contains(search)) {
-                        find.add(i);
+                        if (cnt == 1)
+                            System.out.println("Here are the matching tasks in your list:");
+                        System.out.println(cnt++ + ". " + i.toString());
                     }
+                }
+
+                if (cnt == 1) {
+                    System.out.println("Sorry, there are no tasks matching your search");
                 }
             }
 
