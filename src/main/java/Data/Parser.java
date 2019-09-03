@@ -2,8 +2,8 @@ package Data;
 
 import Task.*;
 
-
 public class Parser {
+
 
     public void parseInput(String io) {
         int index = 1;
@@ -77,6 +77,7 @@ public class Parser {
                 String searchWord = input.substring(5);
                 TaskList.findTask(searchWord);
                 break;
+
 
             default:
                 System.out.println("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");

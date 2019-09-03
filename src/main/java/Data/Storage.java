@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
-    private static String path = ".\\src\\main\\java\\Data\\duke.txt";
+    private static String path = "D:\\Documents\\NUS\\CS2113T\\duke\\src\\main\\java\\Data\\duke.txt";
     private static Scanner fileInput;
     private static ArrayList<item> oldList = new ArrayList<>();
     private static File f = new File(path);

@@ -1,3 +1,21 @@
-1.[E][✓] photo  (at: 27th of August 2019)
-2.[E][✘] dannce  (at: Monday)
-3.[E][✓] dance  (at: Tuesday)
+Hello! I'm Duke
+What can I do for you?
+Got it. I've added this task:
+ [T][✘] return things
+Now you have 14 tasks in the list.
+? OOPS!!! I'm sorry, but I don't know what that means :-(
+1.[E][✓] dannce  (at: Monday)
+2.[T][✘] more stuff
+3.[T][✓] 5
+4.[T][✘] 7
+5.[T][✓] stuff here
+6.[D][✘] potato time  (by: monday)
+7.[D][✘] potato  (by: potato time)
+8.[T][✓] stuff here and now
+9.[T][✘] 1
+10.[T][✘] 7
+11.[E][✘] potato  (at: monday)
+12.[E][✘] potato  (at: poato)
+13.[E][✘] potato  (at: potato time)
+14.[T][✘] return things
+Bye. Hope to see you again soon!

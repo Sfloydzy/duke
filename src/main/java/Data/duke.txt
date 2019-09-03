@@ -11,4 +11,8 @@ T,0,7,
 E,0,potato ,monday
 E,0,potato ,poato
 E,0,potato ,potato time
-E,0,potato ,potato time
+T,0,return things
+T,0,return stuff
+T,0,return stuff
+T,0,return stuff
+T,0,return stuff
