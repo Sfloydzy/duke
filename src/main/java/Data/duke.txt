@@ -11,15 +11,16 @@ T,0,7,
 E,0,potato ,monday
 E,0,potato ,poato
 E,0,potato ,potato time
-T,0,return things
-T,0,return stuff
-T,0,return stuff
-T,0,return stuff
-T,0,return stuff
-T,0,return stuff
-D,0,dance things ,22nd of March 2019, 7pm
+T,0,return things,
+T,0,return stuff,
+T,0,return stuff,
+T,0,return stuff,
+T,0,return stuff,
+T,0,return stuff,
+D,0,dance things ,22nd of March 2019
 D,0,do things ,22/09/2015
-D,0,do things ,22nd of September 2015, 8.14pm
-T,0,return stuff
-T,0,todo buy bread
-T,0,return stuff
+D,0,do things ,22nd of September 2015
+T,0,return stuff,
+T,0,todo buy bread,
+T,0,return stuff,
+T,0,return things,

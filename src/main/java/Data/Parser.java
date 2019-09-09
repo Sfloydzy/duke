@@ -21,12 +21,8 @@ public class Parser {
                 try {
                     index = Integer.parseInt(input.substring(5)) - 1;
                     TaskList.doneTask(index);
-                    System.out.println("Ran successfully");
                 }
-                catch (NullPointerException e) {
-                    System.out.println("\u2639 OOPS!!! The following task does not exist!");
-                }
-                catch (IndexOutOfBoundsException e) {
+                catch (NullPointerException | IndexOutOfBoundsException e) {
                     System.out.println("\u2639 OOPS!!! The following task does not exist!");
                 }
                 break;
