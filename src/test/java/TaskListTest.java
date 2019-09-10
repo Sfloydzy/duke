@@ -3,8 +3,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test to see if TaskList can be created
+ */
+
 public class TaskListTest {
     protected TaskList taskList = new TaskList();
+
     @Test
     public void alwaysTrue () {
         assertEquals(2,2);

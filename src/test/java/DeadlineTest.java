@@ -3,6 +3,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test to see if Deadline can be created
+ */
+
 public class DeadlineTest {
 
     @Test

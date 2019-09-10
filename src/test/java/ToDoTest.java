@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test to see if Todo can be created
+ */
 public class ToDoTest {
 
     @Test
