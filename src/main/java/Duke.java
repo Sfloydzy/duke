@@ -21,6 +21,12 @@ public class Duke {
         }
     }
 
+    /**
+     * This program runs the main duke program
+     *
+     * @Author Scott Smahon
+     * Level: 9
+     */
     public static void main(String[] args) throws DukeException {
         run();
     }
